@@ -2,3 +2,4 @@ target/
 .idea/
 mvnw*
 *iml
+src/main/resources/static/
