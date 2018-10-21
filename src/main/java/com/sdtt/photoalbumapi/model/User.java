@@ -3,6 +3,7 @@ package com.sdtt.photoalbumapi.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -53,6 +54,16 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", hashId='" + hashId + '\'' +
+                ", images=" + images.stream().map(image -> image.getId()).collect(Collectors.toList()) +
+                ", roles=" + roles +
+                '}';
     }
 
     public enum Role {

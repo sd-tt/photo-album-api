@@ -37,6 +37,76 @@ public class Image implements Serializable {
     public Image() {
     }
 
+    private Image(Builder builder) {
+        this.id = builder.id;
+        this.fullName = builder.fullName;
+        this.name = builder.name;
+        this.extension = builder.extension;
+        this.url = builder.url;
+        this.base64Data = builder.base64Data;
+        this.length = builder.length;
+        this.user = builder.user;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private Long id;
+        private String fullName;
+        private String name;
+        private String extension;
+        private String url;
+        private String base64Data;
+        private Integer length;
+        private User user;
+
+        public Builder setId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setFullName(String fullName) {
+            this.fullName = fullName;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setExtension(String extension) {
+            this.extension = extension;
+            return this;
+        }
+
+        public Builder setUrl(String url) {
+            this.url = url;
+            return this;
+        }
+
+        public Builder setBase64Data(String base64Data) {
+            this.base64Data = base64Data;
+            return this;
+        }
+
+        public Builder setLength(Integer length) {
+            this.length = length;
+            return this;
+        }
+
+        public Builder setUser(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Image build() {
+            return new Image(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }
@@ -106,6 +176,8 @@ public class Image implements Serializable {
                 ", name='" + name + '\'' +
                 ", extension='" + extension + '\'' +
                 ", url='" + url + '\'' +
+                ", length=" + length +
+                ", user=" + user.getId() +
                 '}';
     }
 }
